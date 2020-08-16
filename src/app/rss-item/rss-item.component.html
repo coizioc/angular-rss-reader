@@ -7,4 +7,9 @@
         <img *ngIf="imageSrc !== undefined" [src]="imageSrc">
         <span *ngIf="item.description !== undefined">{{ item.description }}</span>
     </mat-card-content>
+    <mat-card-footer class="rss-item-footer">
+        <a [href]="itemUrl">
+            <mat-icon aria-hidden="false" aria-label="Link to article">link</mat-icon>
+        </a>
+    </mat-card-footer>
 </mat-card>

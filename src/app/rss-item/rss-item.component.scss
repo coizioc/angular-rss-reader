@@ -2,6 +2,7 @@
 
 .rss-item {
     margin: 16px;
+    padding: 16px;
 }
 
 .rss-item-content {
@@ -10,8 +11,15 @@
     img {
         @include mat-elevation(2);
         max-height: 128px;
-        margin: 16px;
-        margin-top: 0;
+        margin-left: 16px;
+        margin-right: 16px;
     }
-    
+}
+
+.rss-item-footer {
+    display: flex;
+
+    a {
+        margin-left: 32px;
+    }
 }

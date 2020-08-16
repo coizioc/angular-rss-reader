@@ -27,7 +27,6 @@ export class RssFeedComponent implements OnInit {
         this.httpClient.get(this.url, { responseType: 'text' }).subscribe(async data => {
             this.rssChannel = await this.parseXML(data);
             console.log(this.rssChannel);
-            console.log(this.rssChannel.image);
         });
 
     }
