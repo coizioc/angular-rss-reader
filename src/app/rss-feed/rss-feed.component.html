@@ -1,5 +1,8 @@
-<div class="rss-header">
+<mat-toolbar class="rss-header" color="primary">
+    <!--
     <img *ngIf="rssChannel.image !== undefined" class="rss-thumbnail" [src]="rssChannel.image[0].url" [alt]="rssChannel.image[0].title">
-    <h1> {{ rssChannel.title }} </h1>
-</div>
+    -->
+    <span> {{ rssChannel.title }} </span>
+</mat-toolbar>
+
 <app-rss-item *ngFor="let item of rssChannel.item" [item]="item"></app-rss-item>

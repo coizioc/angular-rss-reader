@@ -1,5 +1,10 @@
-<div class="rss-item">
-    <h3>{{ item.title }}</h3>
-    <p *ngIf="item.pubDate !== undefined">{{ item.pubDate }}</p>
-    <p *ngIf="item.description !== undefined">{{ item.description }}</p>
-</div>
+<mat-card class="rss-item">
+    <mat-card-header>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-subtitle *ngIf="item.pubDate !== undefined">{{ item.pubDate }}</mat-card-subtitle>        
+    </mat-card-header>
+    <mat-card-content class="rss-item-content">
+        <img *ngIf="imageSrc !== undefined" [src]="imageSrc">
+        <span *ngIf="item.description !== undefined">{{ item.description }}</span>
+    </mat-card-content>
+</mat-card>
