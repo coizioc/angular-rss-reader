@@ -1,0 +1,5 @@
+<div class="rss-item">
+    <h3>{{ item.title }}</h3>
+    <p *ngIf="item.pubDate !== undefined">{{ item.pubDate }}</p>
+    <p *ngIf="item.description !== undefined">{{ item.description }}</p>
+</div>

@@ -1,6 +1,5 @@
-<h1> {{ rssChannel.title }} </h1>
-<ul>
-    <li *ngFor="let item of rssChannel.item">
-        {{ item.title }}
-    </li>
-</ul>
+<div class="rss-header">
+    <img *ngIf="rssChannel.image !== undefined" class="rss-thumbnail" [src]="rssChannel.image[0].url" [alt]="rssChannel.image[0].title">
+    <h1> {{ rssChannel.title }} </h1>
+</div>
+<app-rss-item *ngFor="let item of rssChannel.item" [item]="item"></app-rss-item>

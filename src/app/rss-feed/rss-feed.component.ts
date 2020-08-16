@@ -1,17 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as xml2js from 'xml2js';
-
-interface Item {
-    title: string;
-    [propName: string]: any;
-}
-
-interface Channel {
-    title: string;
-    item: Item[];
-    [propName: string]: any;
-}
+import { Channel } from '../interfaces';
 
 @Component({
     selector: 'app-rss-feed',
@@ -20,7 +10,12 @@ interface Channel {
 })
 export class RssFeedComponent implements OnInit {
     @Input() url: string;
-    rssChannel: Channel | null = null;
+    rssChannel: Channel = {
+        description: "",
+        link: "",
+        title: "Unknown RSS Feed.",
+        item: [],
+    };
 
     constructor(private httpClient: HttpClient) { }
 
@@ -29,9 +24,10 @@ export class RssFeedComponent implements OnInit {
     }
 
     private async retrieveFeed() {
-        this.httpClient.get(this.url, {responseType: 'text'}).subscribe(async data => {
+        this.httpClient.get(this.url, { responseType: 'text' }).subscribe(async data => {
             this.rssChannel = await this.parseXML(data);
             console.log(this.rssChannel);
+            console.log(this.rssChannel.image);
         });
 
     }
@@ -45,8 +41,8 @@ export class RssFeedComponent implements OnInit {
                 explicitArray: true
             });
             parser.parseString(data, function (err, result) {
-                if(err !== null) {
-                    console.log(err);
+                if (err !== null) {
+                    console.error(err);
                 }
                 const rssChannel = result.rss.channel[0];
                 res(rssChannel);
